@@ -37,6 +37,12 @@ Array.prototype.search = function(num) {
 
   var result = {count : 0, index : 0}
 
+  if (num === this[maxIndex]) {
+      result.count = 0;
+      result.index = maxIndex;
+      return result;
+    }
+
   while(minIndex < maxIndex) {
 
     result.count += 1;
@@ -54,7 +60,7 @@ Array.prototype.search = function(num) {
     }
   }
 
-  
+  result.index - 1;
   return result;
 };
 
