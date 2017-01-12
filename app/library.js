@@ -34,34 +34,49 @@ Array.prototype.search = function(num) {
   //var index;
   var currentElement;
   //var count = 1;
+  var currentIndex;
 
-  var result = {count : 0, index : 0}
+  //var result = {count : 0, index : 0, length: this.length}
+  this.count = 0;
+  this.index = -1;
 
-  if (num === this[maxIndex]) {
+  /*if (num === this[maxIndex]) {
       result.count = 0;
       result.index = maxIndex;
       return result;
+    }*/
+
+  while(minIndex <= maxIndex) {
+
+    //result.count += 1;
+    currentIndex = (minIndex + maxIndex) / 2 | 0;
+    currentElement = this[currentIndex];
+
+    if (this[minIndex] === num) {
+      //minIndex = result.index + 1;
+      this.index = minIndex;
+      break;
     }
-
-  while(minIndex < maxIndex) {
-
-    result.count += 1;
-    result.index = (minIndex + maxIndex) / 2 | 0;
-    currentElement = this[result.index];
+    else if (this[maxIndex] === num) {
+      this.index = maxIndex;
+      break;
+    }
 
     if (currentElement < num) {
-      minIndex = result.index + 1;
+      minIndex = currentIndex + 1;
     }
     else if (currentElement > num) {
-      maxIndex = result.index -1;
+      maxIndex = currentIndex - 1;
     }
     else {
-      return result;
+      this.index = currentIndex;
+      break;
     }
+    this.count += 1;
   }
 
-  result.index - 1;
-  return result;
+  //result.index - 1;
+  return this;
 };
 
 
